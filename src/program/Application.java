@@ -22,8 +22,8 @@ public class Application {
                 String name = fields[0];
                 int count = Integer.parseInt(fields[1]);
                 if (votes.containsKey(name)) {
-                    int voteSoFar = votes.get(name);
-                    votes.put(name, count + voteSoFar);
+                    int voteSum = votes.get(name);
+                    votes.put(name, count + voteSum);
                 } else {
                     votes.put(name, count);
                 }
@@ -31,10 +31,8 @@ public class Application {
             }
 
 
-
-
             for (String key : votes.keySet()) {
-                Candidate candidate = new Candidate(key,votes.get(key));
+                Candidate candidate = new Candidate(key, votes.get(key));
                 candidates.add(candidate);
                 System.out.println(key + ": " + votes.get(key));
             }
