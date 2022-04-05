@@ -21,11 +21,10 @@ public class Application {
                 String[] fields = line.split(",");
                 String name = fields[0];
                 int count = Integer.parseInt(fields[1]);
-                if (votes.containsKey(name)) {
-                    int voteSum = votes.get(name);
-                    votes.put(name, count + voteSum);
-                } else {
+                if (votes.get(name) == null) {
                     votes.put(name, count);
+                } else {
+                    votes.put(name, count + votes.get(name));
                 }
                 line = br.readLine();
             }
